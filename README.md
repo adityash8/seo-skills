@@ -1,121 +1,65 @@
-# Claude SEO Skills
+# Claude SEO Skills 🔎
 
-A collection of Claude skills for technical SEO, content strategy, and AI search optimization.
+Five SEO skills for Claude and other Agent Skills clients. They do the work, check it, and show their evidence, so you don't get a confident list of "best practices" from 2019.
 
----
+## The skills
 
-## Available Skills
+| Skill | Use it when you want to... |
+|---|---|
+| `seo-audit` | Audit a site end to end: indexing, canonicals, Core Web Vitals, schema, links, CTR gaps and AI search visibility. You get a prioritized report with fixes. |
+| `seo-quick-wins` | Find wins in the traffic you already have: pages ranking 4 to 15 with weak CTR, decaying posts, and money pages nobody links to. |
+| `internal-linking` | Add or audit contextual internal links, rescue orphan pages, build hubs, and fix lazy anchors. Checks every target URL before linking to it. |
+| `seo-ops` | Get ready-made workflows for SERP gap research, content briefs, meta variants, schema, AI-citable rewrites and bulk keyword work. |
+| `verified-seo-article-writing` | Turn a brief, press release or pile of notes into a publish-ready article where every claim is checked against a source. |
 
-### `seo-audit` — Comprehensive Technical SEO Audit
+They hand off to each other. An audit finds the problems, quick wins ranks what to fix first, internal linking and SEO ops do the fixing, and the article writer ships new pages.
 
-A senior technical SEO consultant in a prompt. Runs a structured 20-section audit against your domain and delivers a client-ready report with prioritized fixes, copy-paste code, and revenue impact estimates.
+## Install
 
-**What it covers:**
-- **20 audit sections**: Manual actions, global redirect, organic traffic, MoM growth, Core Web Vitals, indexability, robots.txt, XML sitemaps, canonicalization, content decay, broken links, HTTP issues, schema markup, internal linking, backlink profile, content gap, CTR analysis, GEO TL;DR blocks, AI surface scoring, schema page-type matrix
-- **GEO optimization**: Generates citation-optimized TL;DR blocks (<75 words) for LLM/AI visibility (ChatGPT, Perplexity, Google AIO)
-- **AI surface scoring**: Scores each keyword against Google Traditional vs AI surfaces and recommends content format per surface
-- **CTR gap analysis**: Compares actual CTR to position benchmarks, generates 3 title variants + meta description for each gap
-- **Stack-aware fix application**: Auto-applies fixes for Webflow Enterprise, Cloudflare, Vercel, WordPress — or outputs copy-paste diffs
-- **Revenue impact estimates**: Calculates monthly opportunity from traffic recovery (CVR x ARPU x recovered traffic)
-
-**Works with:** Ahrefs MCP (full audit) | Semrush MCP (domain-level) | web_fetch only (limited)
-
-**Install:**
-```bash
-mkdir -p ~/.claude/skills/seo-audit && curl -o ~/.claude/skills/seo-audit/SKILL.md \
-  https://raw.githubusercontent.com/adityash8/claude-seo-skills/main/.claude/skills/seo-audit/SKILL.md
-```
-
-**Trigger phrases:** `seo audit`, `audit this site`, `why is my traffic dropping`, `technical seo`, `check my seo`
-
----
-
-## More Skills Coming Soon
-
-- `ai-seo` — Deep GEO optimization: citation velocity, entity building, answer engine strategy
-- `keyword-research` — Content gap prioritization + KOB scoring
-- `seo-content` — Produce ranking content from keyword gap analysis
-- `analytics-tracking` — Attribution and conversion tracking setup
-- `competitor-alternatives` — Build comparison pages from content gap findings
-
----
-
-## Setup
-
-### Claude Desktop
-
-Place the skill file in `~/.claude/skills/{skill-name}/SKILL.md` and restart Claude Desktop.
-
-### Claude Code (CLI)
+Grab the whole repo, then copy the skills you want. Each skill is a folder: keep the `references/` next to `SKILL.md`, since the big procedures live there.
 
 ```bash
-mkdir -p ~/.claude/skills/seo-audit && curl -o ~/.claude/skills/seo-audit/SKILL.md \
-  https://raw.githubusercontent.com/adityash8/claude-seo-skills/main/.claude/skills/seo-audit/SKILL.md
+git clone https://github.com/adityash8/claude-seo-skills.git
+cp -R claude-seo-skills/.claude/skills/* ~/.claude/skills/
 ```
 
-### Cursor
+The same folders work anywhere that reads Agent Skills, for example Claude Code, Claude Desktop, Codex or Cursor. Put them wherever your client looks for skills.
 
-Copy the skill content into `.cursorrules` or reference it in Cursor's "Rules for AI" settings.
+## Use
 
-### Windsurf / Codeium
+Just ask in plain English:
 
-Place in `.windsurf/skills/` or reference in global rules.
-
-### Claude API
-
-Prepend the skill content to your system prompt:
-
-```python
-import anthropic
-
-with open("seo-audit/SKILL.md") as f:
-    skill_content = f.read()
-
-client = anthropic.Anthropic()
-response = client.messages.create(
-    model="claude-opus-4-6",
-    max_tokens=8096,
-    system=skill_content,
-    messages=[{"role": "user", "content": "Run an SEO audit for example.com"}]
-)
+```text
+Run an SEO audit for example.com
+Find quick wins in my Search Console data
+Plan internal links for /pricing
+Write a verified article from this press release
 ```
 
-## Connecting Ahrefs MCP
+## Data sources
 
-1. Go to [app.ahrefs.com](https://app.ahrefs.com) → Account Settings → API → MCP
-2. Enable the MCP server and copy your connection URL
-3. Add to Claude Desktop config:
+All five skills run on public web data alone. Plug in more sources and they get sharper:
 
-```json
-{
-  "mcpServers": {
-    "ahrefs": {
-      "command": "npx",
-      "args": ["-y", "@ahrefs/mcp-server"],
-      "env": {
-        "AHREFS_API_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
+- **Google Search Console** for real clicks, impressions and CTR
+- **Ahrefs or Semrush** (via their MCP servers) for keywords, backlinks and site audits
+- **Your CMS** if you want fixes applied rather than drafted
+
+No credentials ship with this repo. Bring your own.
+
+## House rules
+
+- Evidence over vibes. Measured data, estimates and unknowns are kept apart.
+- Platform facts age fast. The skills tell your agent to check current docs before trusting a rule.
+- An audit means analysis only. Nothing gets published, deployed or changed on your site unless you say so.
+
+## Check the repo
+
+```bash
+python3 scripts/check.py
 ```
 
-4. Connect Google Search Console to your Ahrefs project for GSC-powered CTR and keyword data
-5. Note your **Site Audit project ID** from the URL: `app.ahrefs.com/site-audit/{PROJECT_ID}/...`
-
-## Connecting Semrush MCP
-
-```json
-{
-  "mcpServers": {
-    "semrush": {
-      "command": "npx",
-      "args": ["-y", "@semrush/mcp-server"]
-    }
-  }
-}
-```
+This validates skill metadata, links and symlinks, and scans for anything that looks private.
 
 ## License
 
-MIT — use freely, attribution appreciated.
+MIT. Use it, fork it, ship it. A star is always nice. ⭐
