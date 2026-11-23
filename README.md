@@ -1,4 +1,4 @@
-# Claude SEO Skills 🔎
+# SEO Skills 🔎
 
 Five SEO skills for Claude and other Agent Skills clients. They do the work, check it, and show their evidence, so you don't get a confident list of "best practices" from 2019.
 
