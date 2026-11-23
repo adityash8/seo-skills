@@ -50,6 +50,8 @@ Missing data limits the result. Do not label a URL an orphan from a sitemap alon
 4. Find relevant targets with search demand, reader value, or a conversion role. Use query and page data rather than position alone.
 5. Find potential donors with topical relevance, useful traffic, external links, or strong existing internal coverage.
 
+If no suitable crawl is available and the site is in scope, run the bundled [crawl helper](scripts/crawl_links.py) from this skill's folder: `python3 scripts/crawl_links.py https://example.com/ --out ./crawl --max-pages 500`. Read `pages.csv`, `links.csv`, `issues.csv`, and `summary.json`. It uses raw HTML; confirm links rendered by JavaScript separately. A failed or truncated crawl cannot establish that a page has no inbound links.
+
 Report counts for published URLs, unique body edges, orphan candidates, verified target issues, and coverage gaps. If a full crawl is unavailable, label the diagnosis partial.
 
 ## Plan
@@ -96,9 +98,9 @@ Use **verified-seo-article-writing** when the article also needs source and clai
 
 ## Measure
 
-Capture a baseline and agree on follow-up windows before implementation. Compare touched pages with similar untouched pages where possible.
+Before implementation, record the target and donor URLs, comparable untouched pages, primary metric, and baseline and follow-up windows. Keep repair work such as redirects separate from the measured link changes. Check that the new links are live and have been recrawled before starting the follow-up window.
 
-Record unique body inlinks, search impressions, clicks, query mix, position, relevant conversions, and implementation quality. Note seasonality, content changes, releases, and search-result changes. A before-and-after movement alone does not establish causality.
+Record unique body inlinks, impressions, clicks, query mix, position, and relevant conversions. When the groups tracked similarly before the change, compare the change on the targets with the change on the untouched pages over equal-length windows. If using search position, compare the same query set in both windows and weight position by impressions. Track donor clicks separately so a target gain cannot hide harm to donors. If there is no credible comparison, label the result directional.
 
 If a repeated insertion rule performs poorly or introduces irrelevant links, stop expansion and review the pattern before changing more pages.
 

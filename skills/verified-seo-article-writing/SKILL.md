@@ -41,6 +41,8 @@ Keep exact quotations tied to their source. A paraphrase must not become a quota
 6. Resolve conflicts by authority for the specific claim and clarity of scope. Do not pick the larger or more promotional figure.
 7. Retain only supported facts. Attribute issuer claims and forecasts; omit disputed details unless the dispute itself matters to the reader.
 
+For a named product, retain its exact model or edition in searches. Try it with the vendor and the event or date before broadening the query. Coverage of the product family may confirm the family exists, not that the named model was available or shown.
+
 Use explicit currency names or codes where a symbol is ambiguous. Do not invent missing figures, URLs, names, quotations, or causal explanations.
 
 If source access is unavailable, state the limit. Produce only an explicitly unverified working draft when useful; do not call it publish-ready.
@@ -111,7 +113,7 @@ Use this only when saving a draft is part of the authorized task.
 3. Verify selected link targets resolve to the intended published content. Check redirects, canonical destination, and indexability when the link's purpose requires it.
 4. Read back the saved body, title, slug, SEO title, meta description, and focus keyphrase where supported. WordPress and Yoast-style field support varies; verify against current docs and the installed configuration.
 5. Reopen the draft and inspect rendered content. A successful request alone does not prove that every field persisted.
-6. Return the saved draft URL and verification result. If a field is unsupported or readback fails, report it precisely. Keep the draft unpublished unless publication was explicitly authorized.
+6. Return one verified draft URL and status per article. Name the affected article and any failed check or unsupported field. If no URL was verified, say so rather than substituting another article's link. Keep drafts unpublished unless publication was explicitly authorized.
 
 Pitfall: a bulk update can leave plugin fields unchanged even when the request succeeds. Verify stored values rather than assuming success.
 

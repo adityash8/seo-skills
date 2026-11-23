@@ -34,8 +34,8 @@ SECRETS = re.compile(
     r"|-----BEGIN (?:[A-Z0-9 ]+ )?PRIVATE KEY-----"
 )
 INSTALL_URL = re.compile(
-    r"https://(?:raw\.githubusercontent\.com|github\.com)/" + "ad" + "ityash8/"
-    r"claude-seo-skills(?:\.git|/[^\s)`]+)?"
+    r"https://github\.com/" + "ad" + "ityash8/"
+    r"seo-skills\.git(?=$|[\s)`])"
 )
 
 
@@ -131,9 +131,12 @@ def main():
                 )
             if PRIVATE.search(candidate) or IDENTIFIERS.search(candidate) or SECRETS.search(candidate):
                 errors.append(f"{relative}:{number}: private data or identifier pattern")
-        if path.name == "SKILL.md" and relative.parts[:2] == (".claude", "skills") and len(relative.parts) == 4:
-            skills += 1
-            check_skill(path, content, errors)
+        if path.name == "SKILL.md":
+            if len(relative.parts) != 3 or relative.parts[0] != "skills":
+                errors.append(f"{relative}: expected skills/<name>/SKILL.md")
+            else:
+                skills += 1
+                check_skill(path, content, errors)
         if path.suffix == ".md":
             definitions = dict(re.findall(r"(?m)^ {0,3}\[([^\]]+)\]:\s*<?([^\s>]+)>?", content))
             definitions = {key.casefold(): value for key, value in definitions.items()}

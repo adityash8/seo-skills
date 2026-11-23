@@ -8,16 +8,17 @@ You are a senior technical SEO consultant running a comprehensive site audit. Yo
 
 ## Tool Selection
 
-**Ask the user which SEO tool they have connected before gathering other inputs:**
+**Use the authorized SEO tools you can verify. Ask which are available only if the choice is unclear:**
 
 ```
-Which SEO MCP do you have connected to Claude?
+Which SEO connector or data source is available?
 A) Ahrefs (app.ahrefs.com): full audit including CWV, schema, per-page crawl data
 B) Semrush (mcp.semrush.com or semrush-mcp): full audit, no per-page crawl data
-C) Neither: web_fetch/web_search only (limited audit)
+C) Neither: public web evidence and any supplied exports (limited audit)
 ```
 
 Set `{TOOL_MODE}` = ahrefs | semrush | web_only for the rest of the audit.
+Tool names below are examples. Use the equivalent search, fetch, browser, or read-only connector available in your client and mark unavailable checks as unverified.
 
 **Semrush tradeoffs vs Ahrefs:**
 - ✅ Keyword research, domain overview, competitor analysis, backlinks, traffic estimates
@@ -117,6 +118,8 @@ Ahrefs MCP calls:
 
   Ahrefs:gsc-performance-by-device
     project_id: {GSC_ID}, date_from: {3_MONTHS_AGO}
+
+For country or language splits, check the scope of each returned row, not just the requested filter. An overview may return a domain-wide traffic estimate alongside country-filtered keywords. If the scope is unclear, compare a second location or check a dedicated country report. Keep the result labeled estimated and separate from Search Console clicks or first-party sessions.
 
 Report: monthly traffic, clicks/impressions trend, mobile vs desktop split, branded vs non-branded share.
 Flag: if branded traffic > 70% of total: critical scaling risk.
@@ -249,7 +252,9 @@ If sitemap missing or broken, output corrected sitemap_index.xml template.
     where: self_canonical = false OR canonical_code != 200
     order_by: traffic:desc, limit: 20
 
-Pass: every indexed page has self_canonical = true. Flag pages canonicalizing elsewhere.
+Flag unintended canonicals, redirects, errors, or conflicting signals. An intentional duplicate may point to the preferred URL. Check that the preferred target returns 200 and is indexable.
+
+For localized pages, check that each variant has a stable URL and that the `hreflang` set covers every intended variant, includes self-references, and is reciprocal. Independently indexable translations should not canonicalize to another language. For substantially duplicate same-language regional pages, verify the preferred canonical and keep the regional alternates in the `hreflang` set. See [Google’s multilingual and multi-regional guidance](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites).
 
 ---
 
@@ -642,7 +647,7 @@ B) WordPress.com (posts, pages, settings, redirects via official MCP: all paid p
 C) WordPress self-hosted (via mcp-adapter plugin: Abilities API, WordPress 6.9+)
 D) Cloudflare (Workers/Pages: robots.txt, redirects, HSTS headers)
 E) Vercel (redirects and headers via vercel.json)
-F) Claude Code / custom stack (file-based: robots.txt, schema JSON-LD, meta tags, redirect configs)
+F) Code-based stack (file-based: robots.txt, schema JSON-LD, meta tags, redirect configs)
 G) Apply manually
 ```
 
@@ -691,9 +696,9 @@ create_301_redirect(site_id, fromUrl="/old-path", toUrl="/new-path")
 | Security headers (HSTS) | `vercel.json` headers array | Show diff, confirm |
 | robots.txt | `public/robots.txt` file | Show content, confirm |
 
-**Claude Code (code-based stack)**
+**Code-based stack**
 
-Output complete file changes as diffs. User applies via Claude Code in their repo.
+Return reviewable diffs for the user's repository. Apply or deploy only with the separate authority required for that step.
 
 **WordPress.com (official MCP: all paid plans)**
 
