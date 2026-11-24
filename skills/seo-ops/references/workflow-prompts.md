@@ -41,13 +41,13 @@ Use a CSV writer when generating files. Preserve newlines, quotes, commas, and s
 Before an authorized bulk rewrite:
 
 1. Export the original content and structured fields so each changed page can be restored.
-2. Capture page and query metrics for a named baseline period. Identify high-impact pages that need individual review.
+2. Capture page and query metrics for a named baseline period. Exclude the pages with the most clicks or conversion value from unattended rewrites; review them individually before including them in a batch.
 3. Define an explicit changed-URL cohort and, where useful, an untouched comparison cohort.
 4. Keep titles, descriptions, slugs, and body copy as separate fields. Review field-specific transformations separately.
 5. Preview a representative sample, including edge cases and high-impact pages.
 6. Check for repeated replacements, broken grammar, invalid markup, lost facts, and unexpected URL changes.
 7. Apply the approved bounded batch, then verify saved fields and rendered pages.
-8. Compare the changed cohort over a suitable measurement window. Investigate confounders before attributing performance changes.
+8. Compare the changed cohort with the untouched cohort over matched windows. If no comparison cohort exists, label the result directional. Check whether a few high-volume pages drive the aggregate before deciding what to do about the whole batch.
 
 Pitfall: repeated replacement rules can match earlier replacements and corrupt short metadata fields. A successful script exit is not editorial approval.
 

@@ -106,6 +106,6 @@ On high-value pages, avoid changing titles, content, and links at the same time 
 
 Agree on a repeat interval suited to site volume and release cadence. At each pass, review what shipped, what was verified, and whether the intended outcome improved.
 
-For a repeated template change, choose a small initial sample and comparable untouched pages. A controlled page-level test may help when traffic and sample size support it. Decide duration and detection limits from the site's data; do not assume a universal traffic threshold.
+For a repeated template change, record the primary metric, conversion guardrail, and read date before editing. If same-template pages have similar pre-change trends and enough traffic, assign a change group and an untouched group before editing and compare each group's change from its own baseline over matched windows. If either condition is missing, start with a small batch and report the direction of the change, not lift caused by the edit.
 
-Treat small or uncontrolled comparisons as directional. Pause expansion if clicks, relevant conversions, index coverage, or content quality worsen. Investigate before applying the same pattern more widely.
+Pause expansion if clicks, relevant conversions, index coverage, or content quality worsen. Investigate before applying the same pattern more widely.

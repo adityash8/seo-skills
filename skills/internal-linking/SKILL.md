@@ -32,7 +32,7 @@ Missing data limits the result. Do not label a URL an orphan from a sitemap alon
 
 1. New content stays Draft or Pending Review unless publication is authorized.
 2. Never change a published source to Draft to stage a link. Use a revision, staging copy, or authorized live edit.
-3. Count contextual body links separately from navigation, breadcrumbs, related-content modules, and footer links.
+3. Count contextual body links separately from navigation, breadcrumbs, related-content modules, and footer links. Before relying on an export's body-link counts, check a sample against rendered pages. A link inside `<main>` is not necessarily editorial.
 4. Keep one planned body edge per source and target. Skip insertion if that body edge already exists, including a redirect or URL variant that resolves to the same canonical page.
 5. Use ordinary crawlable links. Do not add internal `nofollow`, `sponsored`, or `ugc` attributes without a documented reason.
 6. Verify the target returns a direct HTTP 200, is indexable, and has the intended canonical. Prefer linking directly to the canonical URL. If evidence is unavailable, mark the edge unverified and do not apply it.
@@ -49,6 +49,8 @@ Missing data limits the result. Do not label a URL an orphan from a sitemap alon
 3. Identify pages with no discovered inbound body links. Separate true discovery problems from pages that should remain excluded or unindexed.
 4. Find relevant targets with search demand, reader value, or a conversion role. Use query and page data rather than position alone.
 5. Find potential donors with topical relevance, useful traffic, external links, or strong existing internal coverage.
+
+Use an authorized crawl or page export that covers the permitted URL scope. If it is missing, ask for it and continue only with checks the available evidence supports. A partial export cannot establish that a page has no inbound links.
 
 Report counts for published URLs, unique body edges, orphan candidates, verified target issues, and coverage gaps. If a full crawl is unavailable, label the diagnosis partial.
 
@@ -96,9 +98,9 @@ Use **verified-seo-article-writing** when the article also needs source and clai
 
 ## Measure
 
-Capture a baseline and agree on follow-up windows before implementation. Compare touched pages with similar untouched pages where possible.
+Before implementation, record the target and donor URLs, any comparable untouched pages, the primary metric, and the baseline and follow-up windows. Keep repair work such as redirects separate from the measured link changes. Check that the new links are live and have been recrawled before starting the follow-up window.
 
-Record unique body inlinks, search impressions, clicks, query mix, position, relevant conversions, and implementation quality. Note seasonality, content changes, releases, and search-result changes. A before-and-after movement alone does not establish causality.
+Record unique body inlinks, impressions, clicks, query mix, position, and relevant conversions. When the groups tracked similarly before the change, compare the change on the targets with the change on the untouched pages over equal-length windows. If using search position, compare the same query set in both windows and weight position by impressions. Track donor clicks separately so a target gain cannot hide harm to donors. If there is no credible comparison, label the result directional.
 
 If a repeated insertion rule performs poorly or introduces irrelevant links, stop expansion and review the pattern before changing more pages.
 
