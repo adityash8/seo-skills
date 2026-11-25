@@ -740,4 +740,4 @@ Manual: [fix name]
 - Use `internal-linking` for contextual link selection and verification.
 - Use `seo-ops` for research, content, metadata, and schema procedures.
 - Use `verified-seo-article-writing` to turn an approved brief into a sourced article.
-- A keyword-research, analytics, or AI-search skill, if available, can extend the audit.
+- Use `seo-ops` for additional keyword research, measurement planning, and AI-search citation review.
