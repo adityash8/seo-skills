@@ -1,6 +1,6 @@
 ---
 name: seo-quick-wins
-description: Use when harvesting recurring SEO opportunities from existing search data, including low CTR, content decay, and weak internal linking.
+description: Harvest SEO quick wins from search data, including low CTR, content decay, and weak links. Do NOT use for full audits (seo-audit) or full link projects (internal-linking).
 ---
 
 # SEO Quick Wins
@@ -18,13 +18,13 @@ Turn existing search and crawl evidence into one ranked action queue. Use **seo-
 
 Choose comparable windows with the same duration. Use year-over-year comparisons when seasonality matters, and record known tracking changes, migrations, campaigns, and releases.
 
-No data source means no invented opportunity table. State the exact export needed, and complete only the checks the available evidence supports.
+No data source means no invented opportunity table. State the exact export needed, and complete only the checks the available evidence supports. With partial data, produce supported work now and name only the missing evidence for each program. Do not request exports already supplied.
 
 ## Validate the data first
 
 1. Confirm the site, date range, timezone, filters, and device or country scope.
 2. Inspect the current connector schema before calling tools. Verify field names, accepted filter formats, pagination, and returned row counts.
-3. Distinguish missing data, truncated results, and tool errors from genuine zeroes.
+3. Distinguish missing data, truncated results, and tool errors from genuine zeroes. Ahrefs traffic is estimated; never infer GSC impressions or CTR from it. Unknown search-result conditions remain unknown.
 4. Keep query-level, page-level, and query-page datasets separate. Do not join independently aggregated exports as if they contained paired observations.
 5. Normalize obvious URL variants using the verified canonical map. Do not merge pages just because their titles match.
 
@@ -44,7 +44,7 @@ For prioritization, a scenario may use:
 
 `potential additional clicks = impressions × max(0, comparison CTR - current CTR)`
 
-Label the comparison source and uncertainty. This is a scenario, not promised lift. If there is no defensible comparison, use a qualitative priority instead of inventing a benchmark.
+Label the comparison source, inputs, period, and uncertainty. This is a scenario, not promised lift. If there is no defensible comparison, mark expected impact unavailable, name the missing evidence, and use a qualitative priority instead of inventing a benchmark.
 
 Search engines may choose different displayed titles or snippets. Verify current guidance against current docs before making platform-specific claims.
 
@@ -61,15 +61,15 @@ Compare page clicks across the chosen windows, then investigate pages with meani
    - **Demand change:** fewer searches for the topic or a seasonal shift.
    - **Technical problem:** indexing, redirects, rendering, or availability changed. Escalate through **seo-audit**.
 4. Produce a page-specific refresh brief with supporting evidence. Replace weak sections with useful material rather than expanding word count for its own sake.
-5. Estimate effort and rank recoverable losses by evidence strength and value. Do not equate every lost click with recoverable traffic.
+5. Estimate effort and rank recoverable losses by evidence strength and value. For a refresh row, give an estimated recovery range only when supported by evidence. Otherwise mark recovery lift unavailable and name the missing page content, query/search-result evidence, and verified replacement or update evidence. Measured lost clicks and priority scores are not recovery lift.
 
-Use **verified-seo-article-writing** when a substantial refresh needs claim verification. Search-result changes may need a separate visibility analysis rather than a content rewrite.
+Hand refresh briefs to **seo-ops** for page work and to **verified-seo-article-writing** when substantial refreshes need claim verification. Route losses caused by answer features to a separate search and AI visibility analysis; do not count them as rewrite wins.
 
 ## Program 3: Internal-link opportunities
 
 Use a current crawl and published URL inventory to find worthwhile orphan candidates and relevant pages with weak contextual coverage.
 
-1. Keep body-link counts separate from navigation and modules.
+1. Keep body-link counts separate from navigation and modules. Low incoming-link counts are candidates for investigation; confirm crawl coverage and the published URL inventory before calling a page an orphan.
 2. Verify that candidate targets deserve discovery, return direct HTTP 200, are indexable, and have the intended canonical.
 3. Prioritize useful conversion pages and relevant pages already showing search demand.
 4. Read potential donors. Quote the exact insertion context, suggest a descriptive anchor, and skip existing body edges.
@@ -79,9 +79,9 @@ Do not prescribe fixed numbers of sibling links or connect every page to every h
 
 ## Output contract
 
-Start with one combined table:
+Start with exactly one combined ranked quick-wins table. Label every substantive SEO number at its claim or column as measured/exported, calculated with inputs, or estimated/heuristic. Include effort, benchmarks, and targets; identify Ahrefs traffic as estimated. Give numeric impact with its period only where defensible; otherwise mark it unavailable and name the missing evidence.
 
-| Priority | Page | Program | Evidence | Proposed fix | Impact basis | Effort | Confidence | State |
+| Priority | Page | Program | Evidence | Proposed fix | Expected impact and basis | Effort | Confidence | State |
 |---|---|---|---|---|---|---|---|---|
 
 Then provide the concrete deliverables:
@@ -92,11 +92,11 @@ Then provide the concrete deliverables:
 - Data scope, selection rules, limitations, and unresolved checks.
 - A primary outcome metric, guardrail metrics, baseline, and follow-up date.
 
-Use site evidence to rank impact. Avoid dated case-study percentages or invented expected gains. Keep proposed, staged, published, and verified work separate.
+Use site evidence to rank impact. Avoid dated case-study percentages or invented expected gains. Keep proposed, staged, published, and verified work separate. Name the concrete handoff in the deliverable: title/meta and bounded link drafts to **seo-ops**, refresh work to **seo-ops** or **verified-seo-article-writing**, and expanded link projects to **internal-linking**. Do not claim another skill ran without its output.
 
 ## Apply authorized changes
 
-Read-only analysis does not authorize publication. Apply edits only within the stated permission scope. Keep new content in draft unless publishing is authorized; stage edits to published pages without unpublishing them.
+All execution instructions mean preparing drafts until the user explicitly approves the specific live changes. State this requirement in every deliverable before any live edit, publication, consolidation, deletion, or automated rollout. Do not claim a live change from a draft. Apply edits only within the stated permission scope. Keep new content in draft unless publishing is authorized; stage edits to published pages without unpublishing them.
 
 Before saving, capture the prior state and a rollback path. After saving, read back the exact field or content change, publication status, and rendered output where applicable. A tool's success response alone is insufficient proof.
 
