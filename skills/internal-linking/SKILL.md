@@ -1,12 +1,15 @@
 ---
 name: internal-linking
-description: Use when planning, adding, auditing, or measuring contextual internal links, orphan recovery, hubs, or anchor rewrites.
-license: MIT
+description: Plan, audit, review or measure internal links with verified placements, explicit approval for live changes, and evidence-based specialist handoffs.
 ---
 
 # Internal Linking
 
 Build useful paths between pages, then prove that the intended links were saved. For a broad technical audit, start with **seo-audit**. For a recurring, lightweight opportunity harvest, use **seo-quick-wins**. Site hierarchy changes need a separate architecture plan.
+
+Do NOT use for broad technical audits (`seo-audit`), recurring opportunity harvests (`seo-quick-wins`), or article claim verification (`verified-seo-article-writing`). A new hierarchy needs a separate architecture design.
+
+**Required handoff check:** before returning any mode's deliverable, include a `Skill or owner | Task | Required evidence | Status` table for work outside this skill. Name the applicable skill below, pass dated evidence and restrictions, and report `not run`. An unnamed editor does not replace an available skill route. Live-changing follow-ups must say `awaiting explicit user approval; not run` unless approval already covers that exact scope.
 
 ## Choose a mode
 
@@ -16,6 +19,7 @@ Build useful paths between pages, then prove that the intended links were saved.
 | Choose targets, donors, and placements | Plan |
 | Add approved links or rewrite anchors | Implement |
 | Check results after a linking change | Measure |
+| Review an existing link proposal | Review |
 | Link a new article into the existing site | Editorial loop |
 
 ## Required inputs
@@ -30,7 +34,7 @@ Missing data limits the result. Do not label a URL an orphan from a sitemap alon
 
 ## Guardrails
 
-1. New content stays Draft or Pending Review unless publication is authorized.
+1. Draft plans, diagnosis, readouts and handoffs may proceed. Require explicit user approval before live edits, publication, consolidation/deletion, redirect or navigation changes, tracking repairs, rollback or bulk expansion unless that exact scope is already approved. This applies to next actions and handoffs too: a threshold breach proposes rollback and never authorizes it. New content stays Draft or Pending Review until publication is approved.
 2. Never change a published source to Draft to stage a link. Use a revision, staging copy, or authorized live edit.
 3. Count contextual body links separately from navigation, breadcrumbs, related-content modules, and footer links. Before relying on an export's body-link counts, check a sample against rendered pages. A link inside `<main>` is not necessarily editorial.
 4. Keep one planned body edge per source and target. Skip insertion if that body edge already exists, including a redirect or URL variant that resolves to the same canonical page.
@@ -41,6 +45,10 @@ Missing data limits the result. Do not label a URL an orphan from a sitemap alon
 9. Start with a bounded manual batch. Bulk insertion requires explicit scope, rollback, and a small checked sample before expansion.
 10. Use evidence gathered after relevant canonical, redirect, or indexability fixes. Old exports may describe a problem that no longer exists.
 11. Read back the saved content and publication status. A successful save response is not proof that the link exists.
+12. Every metric names its source and date range. Label dated exports, live checks, calculated results and assumptions distinctly. Without per-URL referring-domain evidence, write `authority: unknown`; label impressions used for donor ordering `proxy: GSC impressions`. Never invent authority figures or mix estimated vendor traffic with measured search clicks.
+13. Exclude no-touch pages and pages with conflicting scheduled changes as donors, targets and experiment controls. Missing edges in a partial graph remain provisional; do not invent donors or targets to meet a link quota.
+14. Separate hygiene repairs and sitewide modules from a contextual-link experiment. Hygiene has **no ranking claim**. Count a link as verified only when its ordinary anchor and href exist in raw page HTML; a JavaScript-only link remains a finding.
+
 
 ## Diagnose
 
@@ -73,6 +81,12 @@ Return one row per unique edge:
 
 Use concise descriptive anchors that fit the sentence. Avoid empty anchors, "click here", forced exact matches, and repeated target links. Spread links where they help the reader. A link count is not a quota.
 
+## Review
+
+Test the proposal against current evidence. If access is unavailable, use dated exports and label live checks unavailable. Report correctness gaps in `Plan says | Problem | Evidence | Fix`, followed by a verdict: ready, ready after fixes, or rework.
+
+Reject fabricated context, no-touch donors, redirecting or unverified targets, duplicate body edges and controls connected to treatment pages or donors. Shared query rankings are a reason for diagnosis, not automatic consolidation. Keep hierarchy changes and hygiene separate from the measured wave. Provide the relevant specialist handoffs below.
+
 ## Implement
 
 1. Fetch the current source and target. Confirm the correct page identity and editing permissions.
@@ -102,7 +116,13 @@ Before implementation, record the target and donor URLs, any comparable untouche
 
 Record unique body inlinks, impressions, clicks, query mix, position, and relevant conversions. When the groups tracked similarly before the change, compare the change on the targets with the change on the untouched pages over equal-length windows. If using search position, compare the same query set in both windows and weight position by impressions. Track donor clicks separately so a target gain cannot hide harm to donors. If there is no credible comparison, label the result directional.
 
-If a repeated insertion rule performs poorly or introduces irrelevant links, stop expansion and review the pattern before changing more pages.
+For a controlled readout, register the target/query cohorts, comparable untouched controls, equal whole-week baseline/post windows, noise estimate, success/failure thresholds, donor guardrails and edit freeze before treatment. Exclude controls linked to or from targets or donors. Keep sitewide changes outside the measured wave and record their dates.
+
+Keep the registered metric fixed. For position difference-in-differences, calculate target position change minus median control change, with each change equal to post minus baseline. Negative means improvement; apply the registered thresholds and preserve an inconclusive verdict when neither pass nor fail applies. Without enough comparable controls or search volume, say `measurement: underpowered, directional only` and claim no ranking effect.
+
+Broken conversion tracking excludes conversions from the readout; it does not replace the registered metric. Missing donor clicks or impressions mean the donor guardrail is unassessed. Any proposed tracking repair or donor-link rollback requires explicit approval. Extend observation only as the registered procedure permits; do not retrospectively invent a registration or choose favorable windows.
+
+If a repeated insertion rule performs poorly or introduces irrelevant links, stop expansion and review the pattern before proposing more changes.
 
 ## Output contract
 
@@ -114,3 +134,18 @@ Return the edge queue plus:
 - Remaining blockers and the next measurement date.
 
 Use distinct states: **proposed**, **staged**, **published**, **verified**, or **blocked**. Report an unavailable check explicitly. Never report a staged revision as a live result.
+
+## Required handoffs
+
+Include only relevant rows, with the concrete URLs, task, dated evidence, restrictions and execution status. Do not claim another skill has run without its output.
+
+| Skill or owner | Task | Required evidence | Status |
+|---|---|---|---|
+| `seo-ops` | Later approved page/link edits | Edge queue, exact context, current HTML, target checks, no-touch list and exact approval scope | not run; live changes awaiting explicit user approval |
+| `verified-seo-article-writing` | Article claim verification | Full draft, claim list, supporting sources and link context | not run |
+| `seo-audit` | Diagnose possible cannibalization before any consolidation decision | Dated page-query exports, both pages, intent, canonical/indexing and redirect history | not run; live changes awaiting explicit user approval |
+| Architecture specialist | Design a new hierarchy/navigation separately | URL inventory, current graph, proposed user paths, no-touch list and experiment windows | not run; live changes awaiting explicit user approval |
+| Analytics specialist | Diagnose broken conversion tracking and propose repair | Dated event history, property/event configuration, signup flow and experiment freeze | not run; live repair awaiting explicit user approval |
+
+The last two rows are human roles; this public collection has no dedicated skills for those specialties. Diagnosis and design may proceed without authorizing implementation.
+
