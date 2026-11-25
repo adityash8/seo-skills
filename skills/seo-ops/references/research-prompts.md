@@ -49,7 +49,7 @@ Produce primary clusters, related topics, specific variants, and terms to exclud
 - Map keywords with the same intent to one useful page where appropriate.
 - Do not infer conversion rate from query shape alone.
 - Prioritize reader value and business relevance alongside measured demand.
-- If strategic prioritization is needed, use a keyword-research skill if available, or state the prioritization method directly.
+- If strategic prioritization is needed, state the prioritization method and supporting evidence directly.
 
 ## Depth and scope benchmarking
 

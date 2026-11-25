@@ -1,6 +1,6 @@
 ---
 name: seo-ops
-description: Use when you need an SEO execution workflow, research table, content brief, metadata variants, structured data, citation review, or bulk content plan.
+description: "Execute SEO research, briefs, link plans, schema and bulk pilots. Do NOT use for site audits (seo-audit) or full articles (verified-seo-article-writing)."
 ---
 
 # SEO Ops
@@ -17,7 +17,7 @@ Turn an SEO request into a finished, evidence-backed deliverable. This is an exe
 - Mark unresolved evidence as `[VERIFY: evidence needed]` in working material. Resolve or remove it before calling a deliverable ready for publication.
 - Preserve uncertainty and source attribution. A vendor's claim is a claim, not independent proof.
 - Use plain sentences, natural headings, and no em dashes in generated copy.
-- Reading and drafting do not authorize publishing, changing settings, outreach, or bulk edits. Respect existing authorization and prepare a reviewable result before requesting any missing approval.
+- Reading and drafting do not authorize live edits, markup insertion, publication, settings changes, outreach, or expanded automated rollout. Require explicit approval for the concrete live action and scope before execution. Respect approval already given for that scope; produce reviewable drafts immediately and mark unapproved actions pending.
 
 ## Choose the operation
 
@@ -32,6 +32,14 @@ Read only the reference needed for the current job.
 | Answer summaries and citation-friendly rewrites | [Citation prompts](references/geo-prompts.md) | Separate citations from recommendations |
 | Titles, descriptions, CTR review, schema, or image specifications | [Metadata and schema prompts](references/metadata-schema-prompts.md) | seo-quick-wins for site-wide prioritization |
 | Full workflow, bulk processing, or pre-publication review | [Workflow prompts](references/workflow-prompts.md) | Keep batches reversible and measurable |
+
+## Handoffs
+
+End every chained operation with the destination skill, the artifact and unresolved evidence to pass, and the expected result. If unavailable, mark the handoff pending and provide these details without claiming execution. Name only sibling skills that exist in this package.
+
+- Full article production: verified-seo-article-writing. Pass the approved brief, source material and evidence gaps; expect a sourced article draft for review.
+- Expanded link implementation: internal-linking. Pass the bidirectional plan, source passages, inventory and unresolved checks; expect a reviewed site-wide change list and validation plan.
+- For schema implementation or expanded batch work without a matching sibling, provide the concrete implementation or expansion plan directly, including needed inputs, expected result and approval boundary.
 
 ## Evidence and measurement guardrails
 
