@@ -1,6 +1,6 @@
 ---
 name: verified-seo-article-writing
-description: Use when turning a brief, release, notes, or screenshots into a sourced SEO article with claim verification, corrections, and publishing notes.
+description: "Write sourced SEO articles from briefs with claim checks and corrections. Do NOT use for site audits (seo-audit), metadata rollout (seo-ops), or link projects (internal-linking)."
 ---
 
 # Verified SEO Article Writing
@@ -75,6 +75,9 @@ For economic or market reports, prefer the final report, annex tables, and relev
 
 If a primary site rejects a lightweight fetch, try an authorized browser before declaring the source unavailable. Do not bypass access controls. For paid reports, verify only material actually accessible and distinguish the report's findings from its sale-page details.
 
+## Sibling handoffs
+When the request includes larger work beyond the article, name the relevant sibling in the deliverable: `internal-linking` for a broader contextual/internal-link project, `seo-audit` for a technical site audit, and `seo-ops` for site-wide metadata implementation. Prepare the article now, state the follow-up scope, and do not claim a sibling was run without its actual output.
+
 ## 3. Set the search intent
 
 Confirm or derive:
@@ -117,6 +120,9 @@ Use this only when saving a draft is part of the authorized task.
 
 Pitfall: a bulk update can leave plugin fields unchanged even when the request succeeds. Verify stored values rather than assuming success.
 
+## Approval before external actions
+Local drafting may proceed immediately. Require explicit user approval covering the specific action and destination before live edits, CMS writes, sending or publication; an already approved action need not be approved again. State this requirement in the deliverable and distinguish prepared, saved and verified, sent, and published states. Missing access or approval means keep the local package and report the blocker, never claim execution.
+
 ## Output contract
 
 Return the requested artifact with:
@@ -128,6 +134,9 @@ Return the requested artifact with:
 5. Delivery status, when saving was requested: prepared, saved and verified, or blocked with the failed prerequisite.
 
 Keep research notes out of the article body unless the reader needs attribution or a caveat. Follow any requested output format without dropping accuracy flags.
+
+## Changelog
+- 2026-11-22: Preserved loop-tested sibling handoffs and explicit approval before external actions. Library suite: baseline 70% twice to final 100% twice; generator and scorer were the same model (self-eval bias). Public adaptation and metadata are editorial and were not behaviorally re-tested.
 
 ## Final gate
 
